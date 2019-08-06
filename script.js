@@ -3,6 +3,7 @@ let caixaTexto = document.querySelector("input");
 let jogo = document.querySelector("#jogo");
 let botao = document.querySelector("button");
 let quadrados = document.querySelectorAll(".colunaJogo");
+let botaoResest = document.querySelector("#reset");
 let jogador1;
 let jogador2;
 let jogada = 0;
@@ -92,9 +93,14 @@ for(let quadrado of quadrados){
 }
 
 function final() {
-    alert("Você venceu");
     for (let quadrado of quadrados) {
         quadrado.onclick = null;
+    }
+    if(jogada % 2 == 1) {
+        alert("O jogador 1 foi o vencedor.");
+    }
+    else{
+        alert("O jogador 2 foi o vencedor.");
     }
 }
 
@@ -102,5 +108,19 @@ function velha() {
     alert("Ih, deu velha");
 }
 
+function reset() {
+    jogada = 0;
+    quadrados[0].innerHTML = "";
+    quadrados[1].innerHTML = "";
+    quadrados[2].innerHTML = "";
+    quadrados[3].innerHTML = "";
+    quadrados[4].innerHTML = "";
+    quadrados[5].innerHTML = "";
+    quadrados[6].innerHTML = "";
+    quadrados[7].innerHTML = "";
+    quadrados[8].innerHTML = "";
+}
+
 esconderJogo();
 botao.onclick = escolherJogador;
+botaoResest.onclick = reset;
